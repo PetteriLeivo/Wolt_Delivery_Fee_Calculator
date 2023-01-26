@@ -1,5 +1,7 @@
+import React, { useState } from "react";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import CalendarAndClock from './CalendarAndClock';
 
 const smallCartValueSurcharge = (cartValue: number) => {
     let surcharge: number = 0
@@ -41,6 +43,8 @@ const bigOrderSurcharge = (amountOfItems: number) => {
 }
 
 const InputForm = () => {
+    const [startDate, setStartDate] = useState(new Date())
+
     const formik = useFormik({
         initialValues: {
             cartValue: '',
@@ -49,19 +53,63 @@ const InputForm = () => {
 
         },
         onSubmit: values => {
-            let cartValue = parseFloat(values.cartValue)
-            let deliveryDistance = parseFloat(values.delivery_distance_in_meters)
-            let numberOfItems = parseFloat(values.amount_of_items)
-            let surcharge: number = smallCartValueSurcharge(cartValue)
-            console.log("small order surcharge", surcharge)
+            let cartValue: number = parseFloat(values.cartValue)
+            let theWholeDeliveryFee: number = 0
 
-            let maxinumDeliveryFee: number = 15
-            let distanceDeliveryFee: number = calculateFeeFromDeliveryDistance(deliveryDistance)
+            if (cartValue >= 100) {
+                theWholeDeliveryFee = 0
+                console.log("cartValue is 100 or more and delivery fee is ", theWholeDeliveryFee)
+            }
+            else {
+                let weekDayNumber: number = startDate.getUTCDay()
+                let utcHours: number = startDate.getUTCHours()
+                let utcMinutes: number = startDate.getMinutes()
+                let fridayRushMultiplier: number = 1;
 
-            console.log("delivery fee from distance", distanceDeliveryFee)
+                if (weekDayNumber === 5 && utcHours >= 15 && utcHours <= 19) {
+                    if (utcHours === 19 && utcMinutes > 0) {
+                        console.log("friday rush has just stopped")
+                    }
+                    else {
+                        console.log("friday rush")
+                        fridayRushMultiplier = 1.2
+                    }
+                }
 
-            let itemsFee: number = bigOrderSurcharge(numberOfItems)
-            console.log("items fee", itemsFee)
+                let smallOrderSurcharge: number = smallCartValueSurcharge(cartValue)
+                console.log("small order surcharge", smallOrderSurcharge)
+
+                let deliveryDistance: number = parseFloat(values.delivery_distance_in_meters)
+                let distanceDeliveryFee: number = calculateFeeFromDeliveryDistance(deliveryDistance)
+
+                console.log("delivery fee from distance", distanceDeliveryFee)
+
+                let numberOfItems: number = parseFloat(values.amount_of_items)
+                let amountOfItemsFee: number = bigOrderSurcharge(numberOfItems)
+                console.log("items fee", amountOfItemsFee)
+
+                theWholeDeliveryFee = fridayRushMultiplier * (smallOrderSurcharge + distanceDeliveryFee + amountOfItemsFee)
+                let maxinumDeliveryFee: number = 15
+                if (theWholeDeliveryFee < 15) {
+                    console.log("the whole delivery fee", theWholeDeliveryFee)
+                }
+                else {
+                    console.log(theWholeDeliveryFee, "is bigger than", maxinumDeliveryFee, " so delivery fee is ", maxinumDeliveryFee)
+
+                }
+
+            }
+
+
+
+
+
+            console.log(startDate)
+            console.log(startDate.getUTCHours())
+
+
+
+
 
 
             alert(JSON.stringify(values, null, 2))
@@ -162,13 +210,20 @@ const InputForm = () => {
                     </tr>
                     <tr>
                         <td>
+                            <label style={{ paddingRight: "20px" }} htmlFor="Time">Time</label>
+
+                        </td>
+                        <td>       <CalendarAndClock startDate={startDate} setStartDate={setStartDate} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <button type="submit">Calculate delivery price</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </form>
-
 
     )
 
