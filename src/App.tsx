@@ -1,8 +1,12 @@
-import InputForm from './components/InputForm';
+import {InputFormAndResult} from './components/InputForm';
+
+
 const App = () => {
 
+    
+
   return (
-      <InputForm/>
+    <InputFormAndResult/>
   )
 }
 
