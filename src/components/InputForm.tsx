@@ -9,7 +9,7 @@ import { calculateTheWholeDeliveryFee } from './calculator'
 const DeliveryFeeResult = ({ deliveryFee }: { deliveryFee: number | null }): JSX.Element => {
 
     if (deliveryFee !== null) {
-        return <div>Delivery fee is {deliveryFee}</div>
+        return <div>Delivery fee is: {deliveryFee}</div>
     }
     else {
         return <div></div>
@@ -17,13 +17,14 @@ const DeliveryFeeResult = ({ deliveryFee }: { deliveryFee: number | null }): JSX
 
 }
 
+
 interface InputFormProps {
-    onSubmit: (values:any) => void,
+    onSubmit: (values: any) => void,
     startDate: Date,
     setStartDate: React.Dispatch<React.SetStateAction<Date>>,
 }
 
-const InputForm = ({onSubmit, startDate, setStartDate}: InputFormProps): JSX.Element => {
+const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.Element => {
 
     return (
         <Formik
@@ -62,14 +63,14 @@ const InputForm = ({onSubmit, startDate, setStartDate}: InputFormProps): JSX.Ele
                                 <label style={{ paddingRight: "20px" }} htmlFor="cartValue">Cart value</label>
                             </td>
                             <td>
-                                <Field name="cartValue" type="text" />
+                                <Field id="cartValue" name="cartValue" type="text" placeholder="Write cart value" />
                             </td>
                             <td style={{ paddingLeft: "10px" }}>
                                 €
                             </td>
                             <td style={{ color: "#DC143C" }}>
                                 <ErrorMessage name="cartValue" />
-                                </td>
+                            </td>
                         </tr>
 
                         <tr>
@@ -77,7 +78,7 @@ const InputForm = ({onSubmit, startDate, setStartDate}: InputFormProps): JSX.Ele
                                 <label style={{ paddingRight: "20px" }} htmlFor="delivery_distance_in_meters">Delivery distance</label>
                             </td>
                             <td>
-                                <Field name="delivery_distance_in_meters" type="text" />
+                                <Field id="delivery_distance_in_meters" name="delivery_distance_in_meters" type="text" placeholder="Write delivery distance" />
                             </td>
                             <td style={{ paddingLeft: "10px" }}>
                                 m
@@ -85,7 +86,7 @@ const InputForm = ({onSubmit, startDate, setStartDate}: InputFormProps): JSX.Ele
 
                             <td style={{ color: "#DC143C" }}>
                                 <ErrorMessage name="delivery_distance_in_meters" />
-                                </td>
+                            </td>
                         </tr>
 
                         <tr>
@@ -93,12 +94,12 @@ const InputForm = ({onSubmit, startDate, setStartDate}: InputFormProps): JSX.Ele
                                 <label style={{ paddingRight: "20px" }} htmlFor="amount_of_items">Amount of items</label>
                             </td>
                             <td>
-                                <Field name="amount_of_items" type="text" />
+                                <Field id="amount_of_items" name="amount_of_items" type="text" placeholder="Write amount of items" />
                             </td>
                             <td style={{ paddingLeft: "10px" }}>
                             </td>
                             <td style={{ color: "#DC143C" }}>
-                            <ErrorMessage name="amount_of_items" />
+                                <ErrorMessage name="amount_of_items" />
                             </td>
 
                         </tr>
@@ -107,7 +108,9 @@ const InputForm = ({onSubmit, startDate, setStartDate}: InputFormProps): JSX.Ele
                                 <label style={{ paddingRight: "20px" }} htmlFor="Time">Time</label>
 
                             </td>
-                            <td>       <CalendarAndClock startDate={startDate} setStartDate={setStartDate} />
+
+                            <td>       
+                                <CalendarAndClock startDate={startDate} setStartDate={setStartDate} />
                             </td>
                         </tr>
                         <tr>
@@ -132,12 +135,13 @@ const InputFormAndResult = () => {
 
 
     const onSubmit = (values: any) => {
+        console.log("values", values)
         let cartValue: number = parseFloat(values.cartValue)
         let deliveryDistance: number = parseFloat(values.delivery_distance_in_meters)
         let numberOfItems: number = parseFloat(values.amount_of_items)
         console.log(startDate)
         setCalculatedDeliveryFee(calculateTheWholeDeliveryFee(cartValue, deliveryDistance, numberOfItems, startDate))
-        
+
     }
 
     return (
@@ -150,4 +154,4 @@ const InputFormAndResult = () => {
     )
 
 }
-export { DeliveryFeeResult, InputFormAndResult, InputForm}
+export { DeliveryFeeResult, InputFormAndResult, InputForm }

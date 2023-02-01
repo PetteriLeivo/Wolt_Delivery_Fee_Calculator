@@ -1,5 +1,5 @@
 import { smallCartValueSurcharge, calculateFeeFromDeliveryDistance, bigOrderSurcharge, calculateTheWholeDeliveryFee } from './calculator'
-
+import { expect, test } from '@jest/globals'
 
 test('calculates delivery based on distance correctly', () => {
     expect(calculateFeeFromDeliveryDistance(1)).toBe(1)
