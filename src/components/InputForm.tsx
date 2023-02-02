@@ -6,7 +6,10 @@ import { calculateTheWholeDeliveryFee } from './calculator'
 import './InputFormStyle.css'
 
 
-
+/**
+ * Returns fully calculated delivery fee as JSX.Element.
+ *
+ */
 const DeliveryFeeResult = ({ deliveryFee }: { deliveryFee: number | null }): JSX.Element => {
 
     if (deliveryFee !== null) {
@@ -18,13 +21,20 @@ const DeliveryFeeResult = ({ deliveryFee }: { deliveryFee: number | null }): JSX
 
 }
 
-
+/**
+ * Input form prop types
+ */
 interface InputFormProps {
     onSubmit: (values: any) => void,
     startDate: Date,
     setStartDate: React.Dispatch<React.SetStateAction<Date>>,
 }
 
+/**
+ * Takes cart value, delivery distance and amount of items as user input.
+ * Shows errors if user input is negative number or not a number at all. 
+ * Calendar and clock component uses react-datepicker component to set time and date.
+ */
 const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.Element => {
 
     return (
@@ -127,7 +137,11 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
 
 }
 
-
+/**
+ * 
+ * Component contains onSubmit handler which is passed to InputForm component.
+ * Component returns title, input form and calculated delivery fee as JSX element
+ */
 const InputFormAndResult = () => {
     const [calculatedDeliveryFee, setCalculatedDeliveryFee] = useState<number | null>(null)
     const [startDate, setStartDate] = useState(new Date())
@@ -135,11 +149,6 @@ const InputFormAndResult = () => {
 
 
     const onSubmit = (values: any) => {
-        console.log(typeof values)
-        console.log(values)
-        console.log(typeof values.cartValue)
-        console.log(typeof values.delivery_distance_in_meters)
-        console.log(typeof values.amount_of_items)
         let cartValue: number = parseFloat(values.cartValue)
         let deliveryDistance: number = parseFloat(values.delivery_distance_in_meters)
         let numberOfItems: number = parseFloat(values.amount_of_items)
