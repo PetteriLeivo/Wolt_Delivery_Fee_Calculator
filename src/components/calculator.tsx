@@ -44,7 +44,6 @@ const calculateTheWholeDeliveryFee = (cartValue: number, deliveryDistance: numbe
 
     if (cartValue >= 100) {
         theWholeDeliveryFee = 0
-        console.log("cartValue is 100 or more and delivery fee is ", theWholeDeliveryFee)
         return (
             theWholeDeliveryFee
         )
@@ -57,33 +56,27 @@ const calculateTheWholeDeliveryFee = (cartValue: number, deliveryDistance: numbe
 
         if (weekDayNumber === 5 && utcHours >= 15 && utcHours <= 19) {
             if (utcHours === 19 && utcMinutes > 0) {
-                console.log("friday rush has just stopped")
+                //console.log("friday rush has just stopped")
             }
             else {
-                console.log("friday rush")
                 fridayRushMultiplier = 1.2
             }
         }
 
         let smallOrderSurcharge: number = smallCartValueSurcharge(cartValue)
-        console.log("small order surcharge", smallOrderSurcharge)
 
         let distanceDeliveryFee: number = calculateFeeFromDeliveryDistance(deliveryDistance)
 
-        console.log("delivery fee from distance", distanceDeliveryFee)
 
         let amountOfItemsFee: number = bigOrderSurcharge(numberOfItems)
-        console.log("items fee", amountOfItemsFee)
 
         theWholeDeliveryFee = fridayRushMultiplier * (smallOrderSurcharge + distanceDeliveryFee + amountOfItemsFee)
         let maxinumDeliveryFee: number = 15
         if (theWholeDeliveryFee < 15) {
-            console.log("the whole delivery fee", theWholeDeliveryFee)
             return theWholeDeliveryFee
 
         }
         else {
-            console.log(theWholeDeliveryFee, "is bigger than", maxinumDeliveryFee, " so delivery fee is ", maxinumDeliveryFee)
             theWholeDeliveryFee = maxinumDeliveryFee
             return theWholeDeliveryFee
 

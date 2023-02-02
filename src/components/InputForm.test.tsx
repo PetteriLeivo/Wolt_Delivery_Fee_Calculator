@@ -27,12 +27,12 @@ test('rendering and submitting InputForm', async () => {
   screen.debug();
   const user = userEvent.setup()
 
-  await user.type(screen.getByPlaceholderText(/write cart value/i), '1')
-  await user.type(screen.getByPlaceholderText(/write delivery distance/i), '1')
-  await user.type(screen.getByPlaceholderText(/write amount of items/i), '1')
+  await user.type(screen.getByLabelText(/cart value/i), '1')
+  await user.type(screen.getByLabelText(/Delivery distance/i), '1')
+  await user.type(screen.getByLabelText(/Amount of items/i), '1')
 
 
-  await user.click(screen.getByRole('button', { name: /Calculate delivery price/i }))
+  await user.click(screen.getByRole('button', { name: /Calculate delivery price/i}))
 
 
   expect(onSubmit).toHaveBeenCalledTimes(1)

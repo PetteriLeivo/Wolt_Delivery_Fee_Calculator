@@ -1,0 +1,29 @@
+#titleAndContent {
+  width: 100%;
+  height: 100%;
+}
+
+#titleSection {
+  box-sizing: border-box;
+  width: 100%;
+  height: 5%;
+  border-bottom: solid
+}
+
+#contentSection {
+  box-sizing: border-box;
+  margin-top: 5%;
+  width: 90%;
+  height: 80%;
+  margin-left: 5%;
+  margin-right: 0%;
+  margin-bottom: 0%;
+  font-weight: bold;
+}
+
+#bottom {
+  box-sizing: border-box;
+  height: 5%;
+  width: 100%;
+  border-top: solid
+}

@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup';
 import CalendarAndClock from './CalendarAndClock';
 import { calculateTheWholeDeliveryFee } from './calculator'
+import './InputFormStyle.css'
 
 
 
@@ -37,17 +38,17 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
             validationSchema={Yup.object({
 
                 cartValue: Yup.number()
-                    .typeError("Cart value must be number")
+                    .typeError("Cart value must be a number")
                     .positive("Cart value must be greater than zero")
                     .required('Required'),
                 delivery_distance_in_meters: Yup.number()
-                    .typeError("Delivery distance must be number")
-                    .integer("Delivery distance must be integer")
+                    .typeError("Delivery distance must be a number")
+                    .integer("Delivery distance must be an integer")
                     .positive("Delivery distance must be greater than zero")
                     .required('Required'),
                 amount_of_items: Yup.number()
-                    .typeError("Amount of items must be number")
-                    .integer("Amount of items must be integer")
+                    .typeError("Amount of items must be a number")
+                    .integer("Amount of items must be an integer")
                     .positive("Amount of items must be greater than zero")
                     .required('Required'),
 
@@ -60,12 +61,12 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
                     <tbody>
                         <tr>
                             <td>
-                                <label style={{ paddingRight: "20px" }} htmlFor="cartValue">Cart value</label>
+                                <label htmlFor="cartValue">Cart value</label>
                             </td>
                             <td>
-                                <Field id="cartValue" name="cartValue" type="text" placeholder="Write cart value" />
+                                <Field id="cartValue" name="cartValue" type="text" placeholder="" />
                             </td>
-                            <td style={{ paddingLeft: "10px" }}>
+                            <td>
                                 €
                             </td>
                             <td style={{ color: "#DC143C" }}>
@@ -75,12 +76,12 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
 
                         <tr>
                             <td>
-                                <label style={{ paddingRight: "20px" }} htmlFor="delivery_distance_in_meters">Delivery distance</label>
+                                <label htmlFor="delivery_distance_in_meters">Delivery distance</label>
                             </td>
                             <td>
-                                <Field id="delivery_distance_in_meters" name="delivery_distance_in_meters" type="text" placeholder="Write delivery distance" />
+                                <Field id="delivery_distance_in_meters" name="delivery_distance_in_meters" type="text" placeholder="" />
                             </td>
-                            <td style={{ paddingLeft: "10px" }}>
+                            <td>
                                 m
                             </td>
 
@@ -91,13 +92,12 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
 
                         <tr>
                             <td>
-                                <label style={{ paddingRight: "20px" }} htmlFor="amount_of_items">Amount of items</label>
+                                <label htmlFor="amount_of_items">Amount of items</label>
                             </td>
                             <td>
-                                <Field id="amount_of_items" name="amount_of_items" type="text" placeholder="Write amount of items" />
+                                <Field id="amount_of_items" name="amount_of_items" type="text" placeholder="" />
                             </td>
-                            <td style={{ paddingLeft: "10px" }}>
-                            </td>
+                            <td>&nbsp;</td>
                             <td style={{ color: "#DC143C" }}>
                                 <ErrorMessage name="amount_of_items" />
                             </td>
@@ -105,11 +105,11 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
                         </tr>
                         <tr>
                             <td>
-                                <label style={{ paddingRight: "20px" }} htmlFor="Time">Time</label>
+                                <label htmlFor="Time">Time</label>
 
                             </td>
 
-                            <td>       
+                            <td>
                                 <CalendarAndClock startDate={startDate} setStartDate={setStartDate} />
                             </td>
                         </tr>
@@ -135,21 +135,31 @@ const InputFormAndResult = () => {
 
 
     const onSubmit = (values: any) => {
-        console.log("values", values)
+        console.log(typeof values)
+        console.log(values)
+        console.log(typeof values.cartValue)
+        console.log(typeof values.delivery_distance_in_meters)
+        console.log(typeof values.amount_of_items)
         let cartValue: number = parseFloat(values.cartValue)
         let deliveryDistance: number = parseFloat(values.delivery_distance_in_meters)
         let numberOfItems: number = parseFloat(values.amount_of_items)
-        console.log(startDate)
         setCalculatedDeliveryFee(calculateTheWholeDeliveryFee(cartValue, deliveryDistance, numberOfItems, startDate))
 
     }
 
     return (
-
-        <div>
-            <InputForm onSubmit={onSubmit} startDate={startDate} setStartDate={setStartDate} />
-            <DeliveryFeeResult deliveryFee={calculatedDeliveryFee} />
+        <div id="titleAndContent">
+            <div id="titleSection">
+                <h1>Delivery Fee Calculator</h1>
+            </div >
+            <div id="contentSection">
+                <InputForm onSubmit={onSubmit} startDate={startDate} setStartDate={setStartDate} />
+                <DeliveryFeeResult deliveryFee={calculatedDeliveryFee} />
+            </div >
+            <div id="bottom">
+            </div>
         </div >
+
 
     )
 
