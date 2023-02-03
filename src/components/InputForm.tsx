@@ -160,16 +160,17 @@ const InputFormAndResult = () => {
         <div id="titleAndContent">
             <div id="titleSection">
                 <h1>Delivery Fee Calculator</h1>
+                <hr/>
             </div >
             <div id="contentSection">
                 <InputForm onSubmit={onSubmit} startDate={startDate} setStartDate={setStartDate} />
                 <DeliveryFeeResult deliveryFee={calculatedDeliveryFee} />
             </div >
-            <div id="bottom">
+             <div id="bottom"> 
+             <hr/>          
+
             </div>
         </div >
-
-
     )
 
 }
