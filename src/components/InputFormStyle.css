@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80%;
+  height: 78%;
   width: 100%;
   justify-content: center
 }
 #deliveryFeeResult {
-  padding-top: 10px;
+  padding-top: 2%;
 }
