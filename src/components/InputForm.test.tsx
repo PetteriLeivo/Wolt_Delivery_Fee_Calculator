@@ -1,6 +1,6 @@
 import { expect, test, jest } from '@jest/globals'
 import { render, screen } from '@testing-library/react'
-import { DeliveryFeeResult, InputFormAndResult, InputForm } from './InputForm'
+import { DeliveryFeeResult, InputFormAndResult, InputForm } from './InputFormAndResult'
 import userEvent from '@testing-library/user-event'
 
 

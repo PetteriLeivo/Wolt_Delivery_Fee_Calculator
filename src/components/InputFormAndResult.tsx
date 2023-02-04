@@ -74,7 +74,7 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
                                 <label htmlFor="cartValue">Cart value</label>
                             </td>
                             <td>
-                                <Field id="cartValue" name="cartValue" type="text" placeholder="" />
+                                <Field id="cartValue" name="cartValue" type="text" placeholder="Type cart value" />
                             </td>
                             <td>
                                 €
@@ -89,7 +89,7 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
                                 <label htmlFor="delivery_distance_in_meters">Delivery distance</label>
                             </td>
                             <td>
-                                <Field id="delivery_distance_in_meters" name="delivery_distance_in_meters" type="text" placeholder="" />
+                                <Field id="delivery_distance_in_meters" name="delivery_distance_in_meters" type="text" placeholder="Type delivery distance" />
                             </td>
                             <td>
                                 m
@@ -105,7 +105,7 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
                                 <label htmlFor="amount_of_items">Amount of items</label>
                             </td>
                             <td>
-                                <Field id="amount_of_items" name="amount_of_items" type="text" placeholder="" />
+                                <Field id="amount_of_items" name="amount_of_items" type="text" placeholder="Type items amount" />
                             </td>
                             <td>&nbsp;</td>
                             <td style={{ color: "#DC143C" }}>
@@ -125,7 +125,7 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
                         </tr>
                         <tr>
                             <td>
-                                <button type="submit">Calculate delivery price</button>
+                                <button id="submitButton" type="submit">Calculate delivery price</button>
                             </td>
                         </tr>
                     </tbody>
@@ -157,20 +157,14 @@ const InputFormAndResult = () => {
     }
 
     return (
-        <div id="titleAndContent">
-            <div id="titleSection">
-                <h1>Delivery Fee Calculator</h1>
-                <hr/>
-            </div >
-            <div id="contentSection">
-                <InputForm onSubmit={onSubmit} startDate={startDate} setStartDate={setStartDate} />
-                <DeliveryFeeResult deliveryFee={calculatedDeliveryFee} />
-            </div >
-             <div id="bottom"> 
-             <hr/>          
-
+        <div id="content">
+            <InputForm onSubmit={onSubmit} startDate={startDate} setStartDate={setStartDate} />
+            <div id="deliveryFeeResult">
+            <DeliveryFeeResult deliveryFee={calculatedDeliveryFee} />
             </div>
         </div >
+
+
     )
 
 }
