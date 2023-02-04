@@ -15,7 +15,7 @@ Run:
 npm test
 
 in project's root folder to start the 
-application's test mode. It launches
+application in test mode. It launches
 the test runner in the interactive watch mode.
 
 Command:
