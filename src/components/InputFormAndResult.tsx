@@ -8,7 +8,6 @@ import './InputFormStyle.css'
 
 /**
  * Returns fully calculated delivery fee as JSX.Element.
- *
  */
 const DeliveryFeeResult = ({ deliveryFee }: { deliveryFee: number | null }): JSX.Element => {
 
