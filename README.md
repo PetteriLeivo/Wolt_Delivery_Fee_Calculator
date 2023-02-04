@@ -25,8 +25,6 @@ npm install
 Installs the depencies if they are not already 
 installed.
 
-Screenshot from the application:
-
 ![](./deliveryFeeCalculator.png)
 
 

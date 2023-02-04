@@ -8,9 +8,9 @@ const smallCartValueSurcharge = (cartValue: number) => {
 
 }
 
-/** The minimum fee is always 1€ even if delivery distance < 500 but minium distance must be > 0
+/** The minimum fee is always 1€ even if delivery distance < 500 but minium distance must be > 0.
  * 1€ is added for every additional 500 meters that the courier needs to travel before reaching the destination 
- * function returns calculated delivery fee
+ * Function returns calculated delivery fee.
 */
 const calculateFeeFromDeliveryDistance = (deliveryDistance: number) => {
     let miniumDistance: number = 1
@@ -31,7 +31,7 @@ const calculateFeeFromDeliveryDistance = (deliveryDistance: number) => {
  * If the number of items is five or more, 
  * an additional 50 cent surcharge is added 
  * for each item above and including the fifth item. 
- * An extra "bulk" fee applies for more than 12 items which is 1,20€ 
+ * An extra "bulk" fee applies for more than 12 items which is 1,20€.
  */
 const bigOrderSurcharge = (amountOfItems: number) => {
     let bulkFee: number = 0
@@ -50,9 +50,9 @@ const bigOrderSurcharge = (amountOfItems: number) => {
 }
 
 /** 
- * The delivery is free (0€) when the cart value is equal or more than 100€
- * During the Friday rush (3 - 7 PM UTC), the delivery fee (the total fee including possible surcharges) will be multiplied by 1.2x
- * The delivery fee can never be more than 15€
+ * The delivery is free (0€) when the cart value is equal or more than 100€.
+ * During the Friday rush (3 - 7 PM UTC), the delivery fee (the total fee including possible surcharges) will be multiplied by 1.2x.
+ * The delivery fee can never be more than 15€.
 */
 const calculateTheWholeDeliveryFee = (cartValue: number, deliveryDistance: number, numberOfItems: number, startDate: Date) => {
     let theWholeDeliveryFee: number = 0

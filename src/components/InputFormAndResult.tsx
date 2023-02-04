@@ -21,7 +21,7 @@ const DeliveryFeeResult = ({ deliveryFee }: { deliveryFee: number | null }): JSX
 }
 
 /**
- * Input form prop types
+ * Input form prop types.
  */
 interface InputFormProps {
     onSubmit: (values: any) => void,
@@ -139,7 +139,7 @@ const InputForm = ({ onSubmit, startDate, setStartDate }: InputFormProps): JSX.E
 /**
  * 
  * Component contains onSubmit handler which is passed to InputForm component.
- * Component returns title, input form and calculated delivery fee as JSX element
+ * Component returns input form and calculated delivery fee as JSX element.
  */
 const InputFormAndResult = () => {
     const [calculatedDeliveryFee, setCalculatedDeliveryFee] = useState<number | null>(null)
