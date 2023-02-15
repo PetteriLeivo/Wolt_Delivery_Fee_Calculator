@@ -1,6 +1,6 @@
 Run:
 
-npm install
+**npm install**
 
 in project's root folder (Delivery_Fee_Calculator-main)
 to install the node_modules.
@@ -9,7 +9,7 @@ After the installation you can run these scripts:
 
 To start the application run:
 
-npm start
+**npm start**
 
 in the project's root folder. It starts the application 
 in the development mode.
@@ -21,7 +21,7 @@ You will also see any lint errors in the console.
 
 Run:
 
-npm test
+**npm test**
 
 in the project's root folder to run tests for the 
 application. It launches the test runner in the 
