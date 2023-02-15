@@ -12,7 +12,7 @@ import './InputFormStyle.css'
 const DeliveryFeeResult = ({ deliveryFee }: { deliveryFee: number | null }): JSX.Element => {
 
     if (deliveryFee !== null) {
-        return <div>Delivery fee is: {deliveryFee}</div>
+        return <div>Delivery price: {deliveryFee} €</div>
     }
     else {
         return <div></div>

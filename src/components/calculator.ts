@@ -15,7 +15,7 @@ const smallCartValueSurcharge = (cartValue: number) => {
 const calculateFeeFromDeliveryDistance = (deliveryDistance: number) => {
     let miniumDistance: number = 1
     let miniumDeliveryFee: number = 1
-    if (deliveryDistance < 1000) {
+    if (deliveryDistance < 500) {
         return 1
     }
     else {

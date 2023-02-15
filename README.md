@@ -1,9 +1,18 @@
 Run:
 
+npm install
+
+in project's root folder (Delivery_Fee_Calculator-main)
+to install the node_modules.
+
+After the installation you can run these scripts:
+
+To start the application run:
+
 npm start
 
-in project's root folder to start the 
-application in the development mode.
+in the project's root folder. It starts the application 
+in the development mode.
 Open [http://localhost:3000](http://localhost:3000) 
 to view it in the browser.
 
@@ -14,17 +23,18 @@ Run:
 
 npm test
 
-in project's root folder to start the 
-application in test mode. It launches
-the test runner in the interactive watch mode.
+in the project's root folder to run tests for the 
+application. It launches the test runner in the 
+interactive watch mode.
 
-Command:
+Screenshots:
 
-npm install
+![](./deliveryFeeCalculatorScreenshot)
 
-Installs the depencies if they are not already 
-installed.
+![](./deliveryFeeCalculatorScreenshot2)
 
-![](./deliveryFeeCalculator.png)
+
+
+
 
 
