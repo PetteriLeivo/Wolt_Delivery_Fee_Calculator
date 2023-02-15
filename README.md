@@ -29,9 +29,9 @@ interactive watch mode.
 
 Screenshots:
 
-![](./deliveryFeeCalculatorScreenshot)
+![](./deliveryFeeCalculatorScreenshot.png)
 
-![](./deliveryFeeCalculatorScreenshot2)
+![](./deliveryFeeCalculatorScreenshot2.png)
 
 
 
